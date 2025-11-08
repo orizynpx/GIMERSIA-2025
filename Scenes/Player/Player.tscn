@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkd2van6gammi"]
 
 [ext_resource type="Script" uid="uid://c02yytw51mm1q" path="res://Scenes/Player/Scripts/player.gd" id="1_ft8w5"]
-[ext_resource type="Texture2D" uid="uid://dr7ckrgacd0jr" path="res://Assets/Placeholder/critters/wolf/no effects/wolf-idle.png" id="1_s0eop"]
+[ext_resource type="Texture2D" uid="uid://el8xb3lwdvqk" path="res://icon.svg" id="2_825xp"]
 [ext_resource type="Script" uid="uid://btub6qvcv4npx" path="res://Scripts/state_machine.gd" id="3_4wape"]
 [ext_resource type="Script" uid="uid://djjx43xw7eb7k" path="res://Scenes/Player/Scripts/States/idle.gd" id="4_t26db"]
 [ext_resource type="Script" uid="uid://b6t7lundra15l" path="res://Scenes/Player/Scripts/States/hopping.gd" id="5_fk5o5"]
@@ -17,10 +17,9 @@ radius = 5.0
 script = ExtResource("1_ft8w5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-texture = ExtResource("1_s0eop")
-hframes = 4
-vframes = 4
+position = Vector2(-1, -33)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_825xp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -30)

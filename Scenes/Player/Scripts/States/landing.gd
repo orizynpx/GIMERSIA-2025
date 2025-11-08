@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.current_grid_pos = data["target_grid_pos"]
+	print(player.current_grid_pos)
 	if _is_valid_cell(player.current_grid_pos):
 		if _is_on_enemy_tile(player.current_grid_pos):
 			finished.emit(DEAD)

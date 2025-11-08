@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://c03yw85t8qyf2"]
 
 [ext_resource type="Script" uid="uid://hha50x3tkip2" path="res://Scenes/Stages/Scripts/level.gd" id="1_qwrnw"]
-[ext_resource type="TileSet" uid="uid://buud1shxc1yr2" path="res://Assets/Placeholder/Tileset/pyramid_tileset.tres" id="1_t1uq6"]
 [ext_resource type="PackedScene" uid="uid://bkd2van6gammi" path="res://Scenes/Player/Player.tscn" id="2_0j8e6"]
+[ext_resource type="TileSet" uid="uid://buud1shxc1yr2" path="res://Assets/Tileset/pyramid_tileset.tres" id="2_f1gwu"]
 [ext_resource type="Script" uid="uid://btub6qvcv4npx" path="res://Scripts/state_machine.gd" id="4_n86wx"]
 [ext_resource type="Script" uid="uid://btdyr5fij8mdv" path="res://Scenes/Stages/Scripts/States/ready.gd" id="5_nceub"]
 [ext_resource type="Script" uid="uid://cf0fhq4jg7n28" path="res://Scenes/Stages/Scripts/States/playing.gd" id="6_7828x"]
@@ -20,15 +20,14 @@ level_cleared_menu = NodePath("LevelClearedMenu")
 game_over_menu = NodePath("GameOverMenu")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAApABwAAAAAAAAAAAAhABwAAAAAAAAAAAAiABsAAAAAAAAAAAAjABoAAAAAAAAAAAAjABwAAAAAAAAAAAAkABkAAAAAAAAAAAAkABsAAAAAAAAAAAAlABgAAAAAAAAAAAAlABoAAAAAAAAAAAAlABwAAAAAAAAAAAAmABcAAAAAAAAAAAAmABkAAAAAAAAAAAAmABsAAAAAAAAAAAAnABgAAAAAAAAAAAAnABoAAAAAAAAAAAAnABwAAAAAAAAAAAAoABcAAAAAAAAAAAAoABkAAAAAAAAAAAAoABsAAAAAAAAAAAApABgAAAAAAAAAAAApABoAAAAAAAAAAAAqABkAAAAAAAAAAAAqABsAAAAAAAAAAAArABoAAAAAAAAAAAArABwAAAAAAAAAAAAsABsAAAAAAAAAAAAtABwAAAAAAAAAAAAnABYAAAAQAAQAAAA=")
-tile_set = ExtResource("1_t1uq6")
+scale = Vector2(0.2, 0.2)
+tile_map_data = PackedByteArray("AAAFAAYAAgAAAAAAAAAEAAYAAgAAAAAAAAAFAAcAAgAAAAAAAAADAAYAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAgAAgAAAAAAAAACAAYAAgAAAAAAAAADAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAAFAAkAAgAAAAAAAAABAAYAAgAAAAAAAAACAAcAAgAAAAAAAAADAAgAAgAAAAAAAAAEAAkAAgAAAAAAAAAFAAoAAgAAAAAAAAAAAAYAAgAAAAAAAAABAAcAAgAAAAAAAAACAAgAAgAAAAAAAAADAAkAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAsAAgAAAAAAAAD//wYAAgAAAAAAAAAAAAcAAgAAAAAAAAABAAgAAgAAAAAAAAACAAkAAgAAAAAAAAADAAoAAgAAAAAAAAAEAAsAAgAAAAAAAAAFAAwAAgAAAAAAAAA=")
+tile_set = ExtResource("2_f1gwu")
 
 [node name="Player" parent="." node_paths=PackedStringArray("world") instance=ExtResource("2_0j8e6")]
+z_index = 1
+position = Vector2(610, 296)
 world = NodePath("..")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(637, 342)
-zoom = Vector2(2, 2)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_n86wx")
