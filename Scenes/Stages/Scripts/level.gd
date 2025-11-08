@@ -4,6 +4,7 @@ class_name Level extends Node2D
 @export var player: Player
 @export var level_cleared_menu: CanvasLayer
 @export var game_over_menu: CanvasLayer
+@export var rythim_manager: Control
 var current_cleared_cube = 0
 var TILE_OFFSET = Vector2(0.2, 0.2)
 

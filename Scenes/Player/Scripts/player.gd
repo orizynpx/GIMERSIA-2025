@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 var current_grid_pos: Vector2i
 var input_buffer: Vector2i = Vector2i.ZERO
 var lives: int = 3
+var is_hopping: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
 

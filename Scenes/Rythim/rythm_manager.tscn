@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhg2ek4b2v330"]
+
+[ext_resource type="Script" uid="uid://blqxm2qtw031a" path="res://Scenes/Rythim/Scripts/rythm_manager.gd" id="1_hwo2s"]
+
+[node name="RythmManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hwo2s")
+
+[node name="BeatIndicator" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 655.0
+offset_right = 1230.0
+offset_bottom = 695.0
+
+[node name="BeatTimer" type="Timer" parent="."]
