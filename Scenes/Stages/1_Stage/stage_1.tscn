@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=4 uid="uid://c03yw85t8qyf2"]
+[gd_scene load_steps=11 format=4 uid="uid://c03yw85t8qyf2"]
 
-[ext_resource type="Script" uid="uid://hha50x3tkip2" path="res://Scenes/Stages/stage_logic.gd" id="1_qwrnw"]
+[ext_resource type="Script" uid="uid://hha50x3tkip2" path="res://Scenes/Stages/Scripts/level.gd" id="1_qwrnw"]
 [ext_resource type="TileSet" uid="uid://buud1shxc1yr2" path="res://Assets/Placeholder/Tileset/pyramid_tileset.tres" id="1_t1uq6"]
 [ext_resource type="PackedScene" uid="uid://bkd2van6gammi" path="res://Scenes/Player/Player.tscn" id="2_0j8e6"]
+[ext_resource type="Script" uid="uid://btub6qvcv4npx" path="res://Scripts/state_machine.gd" id="4_n86wx"]
+[ext_resource type="Script" uid="uid://btdyr5fij8mdv" path="res://Scenes/Stages/Scripts/States/ready.gd" id="5_nceub"]
+[ext_resource type="Script" uid="uid://cf0fhq4jg7n28" path="res://Scenes/Stages/Scripts/States/playing.gd" id="6_7828x"]
+[ext_resource type="Script" uid="uid://dpgsgkseg6256" path="res://Scenes/Stages/Scripts/States/level_cleared.gd" id="7_nceub"]
+[ext_resource type="Script" uid="uid://daxnu8a1uxkjv" path="res://Scenes/Stages/Scripts/States/game_over.gd" id="8_7828x"]
+[ext_resource type="Script" uid="uid://5boubu6k3rn6" path="res://Scenes/Stages/Scripts/level_cleared_menu.gd" id="9_gtyqx"]
+[ext_resource type="Script" uid="uid://drw3spke2r61c" path="res://Scenes/Stages/Scripts/game_over_menu.gd" id="10_f1gwu"]
 
-[node name="Stage1" type="Node2D" node_paths=PackedStringArray("tilemap_layer")]
+[node name="Stage1" type="Node2D" node_paths=PackedStringArray("tilemap_layer", "player", "level_cleared_menu", "game_over_menu")]
 script = ExtResource("1_qwrnw")
 tilemap_layer = NodePath("TileMapLayer")
+player = NodePath("Player")
+level_cleared_menu = NodePath("LevelClearedMenu")
+game_over_menu = NodePath("GameOverMenu")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAApABwAAAAAAAAAAAAhABwAAAAAAAAAAAAiABsAAAAAAAAAAAAjABoAAAAAAAAAAAAjABwAAAAAAAAAAAAkABkAAAAAAAAAAAAkABsAAAAAAAAAAAAlABgAAAAAAAAAAAAlABoAAAAAAAAAAAAlABwAAAAAAAAAAAAmABcAAAAAAAAAAAAmABkAAAAAAAAAAAAmABsAAAAAAAAAAAAnABgAAAAAAAAAAAAnABoAAAAAAAAAAAAnABwAAAAAAAAAAAAoABcAAAAAAAAAAAAoABkAAAAAAAAAAAAoABsAAAAAAAAAAAApABgAAAAAAAAAAAApABoAAAAAAAAAAAAqABkAAAAAAAAAAAAqABsAAAAAAAAAAAArABoAAAAAAAAAAAArABwAAAAAAAAAAAAsABsAAAAAAAAAAAAtABwAAAAAAAAAAAAnABYAAAAQAAQAAAA=")
@@ -18,3 +28,75 @@ world = NodePath("..")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(637, 342)
 zoom = Vector2(2, 2)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_n86wx")
+initial_state = NodePath("Ready")
+
+[node name="Ready" type="Node" parent="StateMachine"]
+script = ExtResource("5_nceub")
+
+[node name="Playing" type="Node" parent="StateMachine"]
+script = ExtResource("6_7828x")
+
+[node name="LevelCleared" type="Node" parent="StateMachine"]
+script = ExtResource("7_nceub")
+
+[node name="GameOver" type="Node" parent="StateMachine"]
+script = ExtResource("8_7828x")
+
+[node name="LevelClearedMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("9_gtyqx")
+
+[node name="RetryButton" type="Button" parent="LevelClearedMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -15.5
+offset_right = 25.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Retry"
+
+[node name="Label" type="Label" parent="LevelClearedMenu"]
+offset_left = 596.0
+offset_top = 195.0
+offset_right = 665.0
+offset_bottom = 244.0
+text = "You Won
+"
+
+[node name="GameOverMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("10_f1gwu")
+
+[node name="RetryButton" type="Button" parent="GameOverMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -15.5
+offset_right = 25.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Retry"
+
+[node name="Label" type="Label" parent="GameOverMenu"]
+offset_left = 596.0
+offset_top = 195.0
+offset_right = 665.0
+offset_bottom = 244.0
+text = "You Lose
+"
