@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c03yw85t8qyf2"]
+[gd_scene load_steps=14 format=4 uid="uid://c03yw85t8qyf2"]
 
 [ext_resource type="Script" uid="uid://hha50x3tkip2" path="res://Scenes/Stages/Scripts/level.gd" id="1_qwrnw"]
 [ext_resource type="PackedScene" uid="uid://bkd2van6gammi" path="res://Scenes/Player/Player.tscn" id="2_0j8e6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://drw3spke2r61c" path="res://Scenes/Stages/Scripts/game_over_menu.gd" id="10_f1gwu"]
 [ext_resource type="PackedScene" uid="uid://bodfdnmi8mavi" path="res://Scenes/Enemy/Abe Enemy/abe_enemy.tscn" id="11_r1t47"]
 [ext_resource type="PackedScene" uid="uid://bhg2ek4b2v330" path="res://Scenes/Rythim/rythm_manager.tscn" id="12_1bqcc"]
+[ext_resource type="Script" uid="uid://47wo1rcc8wi5" path="res://Scripts/ScoreUI.gd" id="13_lhrxu"]
 
 [node name="Stage1" type="Node2D" node_paths=PackedStringArray("tilemap_layer", "player", "level_cleared_menu", "game_over_menu", "rythim_manager")]
 script = ExtResource("1_qwrnw")
@@ -116,5 +117,21 @@ text = "You Lose
 [node name="RythmManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_1bqcc")]
 player = NodePath("../Player")
 
-[node name="AbeEnemy" parent="." node_paths=PackedStringArray("world") instance=ExtResource("11_r1t47")]
+[node name="AbeEnemy" parent="." node_paths=PackedStringArray("world") groups=["Enemies"] instance=ExtResource("11_r1t47")]
 world = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("13_lhrxu")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 28
+text = "Score: 0"
+
+[node name="MultiplierLabel" type="Label" parent="CanvasLayer"]
+offset_top = 29.0
+offset_right = 105.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 28
+text = "Score: 0"
