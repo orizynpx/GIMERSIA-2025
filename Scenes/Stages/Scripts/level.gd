@@ -9,6 +9,7 @@ var current_cleared_cube = 0
 var TILE_OFFSET = Vector2(0.2, 0.2)
 
 func _ready() -> void:
+	GameStates.reset_game_stats()
 	get_tree().paused = false
 	level_cleared_menu.retry_button.connect("pressed", _on_level_cleared_retry_pressed)
 	game_over_menu.retry_button.connect("pressed", _on_game_over_retry_pressed)
@@ -22,6 +23,7 @@ func get_spawn_pos() -> Vector2i:
 	return Vector2i(5, 6)
 
 func on_player_landed(grid_pos: Vector2i):
+	GameStates.add_score()
 	var tile_data = tilemap_layer.get_cell_tile_data(grid_pos)
 	var current_index = tile_data.get_custom_data("color_index")
 	var target_index = tile_data.get_custom_data("target_index")

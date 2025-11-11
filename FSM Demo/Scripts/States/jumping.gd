@@ -11,3 +11,10 @@ func physics_update(_delta: float) -> void:
 	
 	if player.velocity.y >= 0:
 		finished.emit(FALLING)
+
+func _check_enemy_collision() -> void:
+	var collision = player.get_last_slide_collision()
+	if collision:
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("Enemies"):
+			GameStates.reset_multiplier()
