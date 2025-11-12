@@ -176,6 +176,7 @@ offset_top = 15.0
 offset_right = 1699.0
 offset_bottom = 536.0
 scale = Vector2(0.1600049, 0.15555653)
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yfk3i")
 toggle_mode = true
 icon = ExtResource("14_v2f53")
@@ -223,6 +224,7 @@ alignment = 1
 
 [node name="ResumeButton" type="Button" parent="PausedMenu/CanvasLayer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("17_rw52e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rw52e")
 toggle_mode = true
@@ -231,6 +233,7 @@ flat = true
 
 [node name="QuitButton" type="Button" parent="PausedMenu/CanvasLayer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("17_rw52e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_buke8")
 text = "Quit
@@ -239,6 +242,7 @@ flat = true
 
 [node name="MenuButton" type="Button" parent="PausedMenu/CanvasLayer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("17_rw52e")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1krj1")
 text = "Main Menu"
@@ -268,10 +272,11 @@ scale = Vector2(1.5793732, 0.74864525)
 texture = ExtResource("19_buke8")
 
 [node name="MusicSlider" type="HSlider" parent="PausedMenu/CanvasLayer/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(300, 10)
+custom_minimum_size = Vector2(250, 10)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_icons/grabber = ExtResource("21_yfk3i")
 theme_override_icons/grabber_highlight = ExtResource("21_yfk3i")
 theme_override_styles/slider = SubResource("StyleBoxTexture_yfk3i")
@@ -298,6 +303,7 @@ texture = ExtResource("20_1krj1")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 theme_override_icons/grabber = ExtResource("21_yfk3i")
 theme_override_icons/grabber_highlight = ExtResource("21_yfk3i")
 theme_override_icons/grabber_disabled = ExtResource("21_yfk3i")
@@ -308,3 +314,4 @@ step = 0.01
 [connection signal="pressed" from="PausedMenu/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PausedMenu/CanvasLayer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PausedMenu/CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PausedMenu/CanvasLayer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
