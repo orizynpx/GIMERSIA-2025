@@ -7,7 +7,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	for area in overlapping_areas:
 		if area.is_in_group("disc"):
-			finished.emit(ON_DISC, {"disc":area})
+			finished.emit(ON_DISC, {"disc":area.get_parent()})
 			return
 	
 	print(player.current_grid_pos)
@@ -19,6 +19,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 			finished.emit(IDLE, {"next_move" : data["next_move"]})
 	else:
 		finished.emit(FALLING)
+
+func _process(delta: float) -> void:
+	pass
 
 func _is_valid_cell(grid_pos: Vector2i) -> bool:
 	return player.world.tilemap_layer.get_cell_source_id(Vector2i(grid_pos.x, grid_pos.y)) != -1

@@ -11,6 +11,7 @@ const ON_DISC = "OnDisc"
 const DEFAULT_SCALE: Vector2 = Vector2(0.2, 0.2)
 
 var player: Player
+var disc_node
 
 func _ready() -> void:
 	await owner.ready

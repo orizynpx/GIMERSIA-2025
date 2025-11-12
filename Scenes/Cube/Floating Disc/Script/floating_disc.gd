@@ -22,10 +22,14 @@ func start_ride(player):
 	var lift_position = global_position + Vector2(0, -400)
 	tween.tween_property(self, "global_position", lift_position, 1.0)
 	tween.tween_property(self, "global_position", target_position, 1.5)
-	tween.tween_callback(_on_ride_complete.bind(player, original_parent))
+	
+	tween.tween_callback(self._on_tween_complete.bind(player, original_parent))
 
-func _on_ride_complete(player, original_parent):
+func _on_tween_complete(player, original_parent):
+	print("On Disc Finished (Tween Callback)") 
+	
 	player.reparent(original_parent)
 	player.global_position = target_position
-	emit_signal("ride_finished", target_position)
+	
+	GameStates.on_ride_disc = false
 	global_position = original_position
